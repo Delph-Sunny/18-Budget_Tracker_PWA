@@ -1,0 +1,36 @@
+{
+  "name": "budget_tracker_pwa",
+  "version": "1.0.0",
+  "description": "ABudget tracking app",
+  "main": "server.js",
+  "scripts": {
+    "lint": "eslint './**/*.js' --quiet",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "lite-server": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Delph-Sunny/18-Budget_Trackers_PWA.git"
+  },
+  "author": "Delph Sunny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Delph-Sunny/18-Budget_Trackers_PWA/issues"
+  },
+  "homepage": "https://github.com/Delph-Sunny/18-Budget_Trackers_PWA#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "lite-server": "^2.5.3",
+    "mongoose": "^5.5.15",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7"
+  }
+}
