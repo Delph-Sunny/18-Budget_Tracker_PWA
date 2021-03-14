@@ -8,9 +8,7 @@ fetch("/api/transaction")
     return response.json();
   })
   .then(data => {
-    // save db data on global variable
-    transactions = data;
-
+    transactions = data; // save db data on global variable
     populateTotal();
     populateTable();
     populateChart();
@@ -144,10 +142,12 @@ function sendTransaction(isAdding) {
     });
 }
 
-document.querySelector("#add-btn").onclick = function() {
+document.querySelector("#add-btn").onclick = (event) => {
+  event.preventDefault(); // To stop propagation in the form
   sendTransaction(true);
 };
 
-document.querySelector("#sub-btn").onclick = function() {
+document.querySelector("#sub-btn").onclick = (event) => {
+  event.preventDefault(); // To stop propagation in the form
   sendTransaction(false);
 };
