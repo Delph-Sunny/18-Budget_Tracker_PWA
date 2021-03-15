@@ -52,8 +52,6 @@ You can use directly the [deployed app](https://homework-18-budget-tracker-pwa.h
 - In the working directory, install the dependencies package with the following code line `npm i`  
 - Once the dependencies have been installed, enter `npm start` 
 
-
-
 ## Images of the App :mag:  
 New app Frontend:  
 ![Budget_Trackers_PWA](./public/assets/img/snippet_1.PNG)  
@@ -69,6 +67,5 @@ Copyright (c) 2021 DT. This project is [MIT](https://choosealicense.com/licenses
 ## Contact  
 
 :octocat:  GitHub: [Delphine](https://github.com/Delph-Sunny)  
-
 
 ---
