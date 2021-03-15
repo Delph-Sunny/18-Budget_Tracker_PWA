@@ -55,10 +55,12 @@ You can use directly the [deployed app](https://homework-18-budget-tracker-pwa.h
 
 
 ## Images of the App :mag:  
-
+New app Frontend:  
 ![Budget_Trackers_PWA](./public/assets/img/snippet_1.PNG)  
-![Budget_Trackers_PWA](./public/assets/img/snippet_2.PNG) 
-![Budget_Trackers_PWA](./public/assets/img/snippet_3.PNG) 
+Manifest and service Worker:    
+![Budget_Trackers_PWA](./public/assets/img/snippet_2.PNG)  
+Offline with IndexedDB:  
+![Budget_Trackers_PWA](./public/assets/img/snippet_3.PNG)   
 
 ## License  
 
