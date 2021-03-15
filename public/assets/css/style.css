@@ -1,11 +1,17 @@
 body {
   font-size: 120%;
-  font-family: Arial;
+  display: flex;
+    min-height: 100vh;
+    flex-direction: column;  
+}
+main {
+  flex: 1 0 auto;
 }
 
-button, input {
-  font-size: 100%;
-  font-family: Arial;
+button, .extra {
+  font-weight: bold;
+  font-size: 70% !important;
+    width: 100%;
 }
 
 table {
@@ -20,10 +26,6 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
-}
-
-.error {
-  color: red;
 }
 
 .wrapper {
@@ -49,3 +51,33 @@ tr:nth-child(even) {
   width: 90%;
   margin: 0 auto;
 }
+
+@media only screen and (max-width : 700px) {
+  nav .brand-logo {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 70%;
+  font-size: 1.15rem;
+  }
+  nav img {
+    width: 26px; 
+    height: 26px;
+  }
+  h4 {
+    font-size: 1.64rem;
+  }
+  h5 {
+    font-size: 1.15rem;
+  }
+  h6 {
+    font-size: 0.95rem;
+  }
+  body {
+    font-size: 0.8rem;
+  }
+  .card-title, .card-action {
+    font-size: 1rem !important;
+}
+  }
+  

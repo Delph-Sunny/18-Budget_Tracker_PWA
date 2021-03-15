@@ -4,66 +4,191 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="theme-color" content="#317EFB" />
+    <meta name="theme-color" content="#ffab91" />
     <!-- Icon website -->
-    <link rel="icon" type="image/png" href="./assets/img/icons/favicon.png" sizes="16x16">
-   
-    <link rel="shortcut icon" href="./assets/img/icons/icon-192x192.png" type="image/x-icon"/>
-
+    <link
+      rel="shortcut icon"
+      href="./assets/img/icons/icon-169x169.png"
+      type="image/x-icon"
+    />
+    <!--Links to Materialize-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="manifest" href="./manifest.webmanifest" />
 
     <title>Budget Tracker</title>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="total">
-        <div class="total">Your total is: $<span id="total">0</span></div>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a class="extra red lighten-1 white-text" id="undo" href="#"><i class="material-icons">undo</i> Undo</a></li>
+      <li><a class="extra red lighten-1 white-text" id="reset" href="#"><i class="material-icons">delete_forever</i> Reset</a></li>
+    </ul>
+
+    <header>
+      <div class="navbar-fixed">
+        <nav class="grey darken-1">
+          <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo center">
+              <img
+                src="./assets/img/icons/budget.png"
+                width="36px"
+                height="36px"
+              />&nbsp;Budget&nbsp;Tracker</a
+            >
+            <ul class="right">
+              <!-- Dropdown Trigger -->
+              <li>
+                <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+                  <i class="material-icons">more_vert</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
-
-      <div class="form">
-        <input type="text" id="t-name" placeholder="Name of transaction" />
-        <input
-          type="number"
-          min="0"
-          id="t-amount"
-          placeholder="Transaction amount"
-        />
-        <button id="add-btn">
-          <i class="fa fa-plus buttons"></i> Add Funds
-        </button>
-        <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
-        <p class="error"></p>
+    </header>
+    <main>
+      <div class="wrapper">
+        <div class="row">
+          <div class="col s6 offset-s3 m6 offset-m3">
+            <h4 class="red-text text-lighten-1">Summary</h4>
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Current Balance ($): </span>
+                <h4 class="card-panel deep-orange lighten-3 center">
+                  <span class="white-text" id="total">0</span>
+                </h4>
+              </div>
+              <div class="card-action">
+                <h6 class="">TODAY: <span id="date">01/01/2021</span></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1 m6">
+            <h4 class="red-text text-lighten-1">New Transaction</h4>
+            <div class="divider"></div>
+            <div class="form">
+              <div class="row">
+                <div class="col s12">
+                  Name:
+                  <div class="input-field inline">
+                    <input
+                      type="text"
+                      id="t-name"
+                      placeholder="Transaction name"
+                      data-length="20"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  Amount:
+                  <div class="input-field inline">
+                    <input
+                      type="number"
+                      min="0"
+                      id="t-amount"
+                      placeholder="Transaction amount"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s6">
+                  <button
+                    type="button"
+                    class="btn btn-block waves-effect waves-light red lighten-1 truncate"
+                    id="add-btn"
+                  >
+                    <i class="large material-icons">add</i> Add Funds
+                  </button>
+                </div>
+                <div class="col s6">
+                  <button
+                    type="button"
+                    class="btn waves-effect waves-light red lighten-1 truncate"
+                    id="sub-btn"
+                  >
+                    <i class="large material-icons">remove</i> Subtract Funds
+                  </button>
+                </div>
+                <div style="position: relative">
+                  <div id="toast-container"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s10 offset-s1 m6">
+            <h4 class="red-text text-lighten-1">Transactions List</h4>
+            <div class="divider"></div>
+            <div class="transactions">
+              <table>
+                <thead>
+                  <th class="deep-orange lighten-3 white-text">Transaction</th>
+                  <th class="deep-orange lighten-3 white-text">Amount</th>
+                </thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <h4 class="red-text text-lighten-1">Graphical Analysis</h4>
+            <div class="divider"></div>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
       </div>
-
-      <div class="transactions">
-        <table>
-          <thead>
-            <th>Transaction</th>
-            <th>Amount</th>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
-      </div>
-
-      <canvas id="myChart"></canvas>
-    </div>
-
+    </main>
+    <footer class="footer-copyright center-align grey darken-1">
+      <p class="white-text">
+        <i
+          >© 2021 Copyright
+          <strong>
+            <a
+              class="red-text text-lighten-1"
+              href="https://github.com/Delph-Sunny"
+              >DT</a
+            ></strong
+          ></i
+        >
+      </p>
+    </footer>
+    <!--Links to Javascript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="./assets/js/db.js"></script>
     <script src="./assets/js/index.js"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.register("service-worker.js").then((reg) => {
+          navigator.serviceWorker.register("/service-worker.js", { scope: "/" })
+          .then(reg => {
             console.log("We found your service worker file!", reg);
+          })
+          .catch(registrationError => {
+                console.log("Registration failed: ", registrationError);
           });
         });
       }
+    </script>
+    <script type="text/javascript">
+      $(".dropdown-trigger").dropdown();
+      $("input#t-name").characterCounter();
     </script>
   </body>
 </html>
