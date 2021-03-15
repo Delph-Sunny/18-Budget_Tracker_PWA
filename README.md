@@ -1,7 +1,5 @@
 # 18-Budget_Trackers_PWA  
 
-:construction: IN PROGRESS :construction:  
-
 <span align="center">   
 
 ---
@@ -26,7 +24,7 @@
 
 
 ## Description
-This application helps you to track your budget online as well offline: You can add deposits and expenses to your budget with or without a connection. It uses [Express](https://www.npmjs.com/package/express), [MongoDB](https://www.mongodb.com/), [Mongoose](https://https://www.npmjs.com/package/mongoose) and [Morgan](https://www.https://www.npmjs.com/package/morgan).  
+This application helps you to track your budget online as well offline: You can add deposits and expenses to your budget with or without a connection. It uses [Express](https://www.npmjs.com/package/express), [MongoDB](https://www.mongodb.com/), [Mongoose](https://www.npmjs.com/package/mongoose),  [Morgan](https://www.npmjs.com/package/morgan) and [Materialize](https://materializecss.com/about.html).  
 
 
 ## User Story and Details
@@ -44,24 +42,23 @@ SO THAT my account balance is accurate when I am traveling.
 ```
 
 :information_source:  
-
-TO DO
-
-
+A service worker allows the app to run offline by caching all data, including the css library. 
+When offline, new transactions are saved to the pending collection in IndexedDB. When back online, all the pending collection is written to the online MongoDB and deleted from IndexedDB.  
 
 ## Installation and Usage  
-
+You can use directly the [deployed app](https://homework-18-budget-tracker-pwa.herokuapp.com/) on Heroku or run it locally with the following steps: 
 - Open a terminal instance  
 - Clone the following [repo](https://github.com/Delph-Sunny/18-Budget_Trackers_PWA)  
 - In the working directory, install the dependencies package with the following code line `npm i`  
-- Once the dependencies have been installed, enter `npm start`  
+- Once the dependencies have been installed, enter `npm start` 
 
 
 
 ## Images of the App :mag:  
 
-![Budget_Trackers_PWA](./images/Snippet1.PNG)  
-
+![Budget_Trackers_PWA](./public/assets/img/snippet_1.PNG)  
+![Budget_Trackers_PWA](./public/assets/img/snippet_2.PNG) 
+![Budget_Trackers_PWA](./public/assets/img/snippet_3.PNG) 
 
 ## License  
 
