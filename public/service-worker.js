@@ -5,10 +5,13 @@ const FILES_TO_CACHE = [
   "/assets/js/db.js",
   "/assets/js/index.js",
   "/assets/css/style.css",
-  "/assets/img/icons/icon-192x192.png",
-  "/assets/img/icons/icon-512x512.png",
-  "/assets/img/icons/favicon.png",
-  "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+  "/assets/img/icons/icon-169x169.png",
+  "/assets/img/icons/icon-452x452.png",
+  "/assets/img/icons/budget.png",
+  "https://fonts.googleapis.com/icon?family=Material+Icons",
+  "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css",
+  "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js",
   "https://cdn.jsdelivr.net/npm/chart.js@2.8.0"
 ];
 

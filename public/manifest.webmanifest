@@ -3,18 +3,18 @@
   "name": "Budget tracking app",
   "icons": [
     {
-      "src": "/assets/img/icons/icon-192x192.png",
-      "sizes": "192x192",
+      "src": "/assets/img/icons/icon-169x169.png",
+      "sizes": "169x169",
       "type": "image/png"
     },
     {
-      "src": "/assets/img/icons/icon-512x512.png",
-      "sizes": "512x512",
+      "src": "/assets/img/icons/icon-452x452.png",
+      "sizes": "452x452",
       "type": "image/png"
     }
   ],
   "start_url": "/",
   "background_color": "#808080",
   "display": "standalone",
-  "theme_color": "#317EFB"
+  "theme_color": "#ffab91"
 }
