@@ -1,4 +1,4 @@
-# 18-Budget_Trackers_PWA  
+# 18-Budget_Tracker_PWA  
 
 <span align="center">   
 
@@ -48,17 +48,17 @@ When offline, new transactions are saved to the pending collection in IndexedDB.
 ## Installation and Usage  
 You can use directly the [deployed app](https://homework-18-budget-tracker-pwa.herokuapp.com/) on Heroku or run it locally with the following steps: 
 - Open a terminal instance  
-- Clone the following [repo](https://github.com/Delph-Sunny/18-Budget_Trackers_PWA)  
+- Clone the following [repo](https://github.com/Delph-Sunny/18-Budget_Tracker_PWA)  
 - In the working directory, install the dependencies package with the following code line `npm i`  
 - Once the dependencies have been installed, enter `npm start` 
 
 ## Images of the App :mag:  
 New app Frontend:  
-![Budget_Trackers_PWA](./public/assets/img/snippet_1.PNG)  
+![Budget_Tracker_PWA](./public/assets/img/snippet_1.PNG)  
 Manifest and service Worker:    
-![Budget_Trackers_PWA](./public/assets/img/snippet_2.PNG)  
+![Budget_Tracker_PWA](./public/assets/img/snippet_2.PNG)  
 Offline with IndexedDB:  
-![Budget_Trackers_PWA](./public/assets/img/snippet_3.PNG)   
+![Budget_Tracker_PWA](./public/assets/img/snippet_3.PNG)   
 
 ## License  
 

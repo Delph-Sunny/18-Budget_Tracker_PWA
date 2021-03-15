@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Delph-Sunny/18-Budget_Trackers_PWA.git"
+    "url": "git+https://github.com/Delph-Sunny/18-Budget_Tracker_PWA.git"
   },
   "author": "Delph Sunny",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Delph-Sunny/18-Budget_Trackers_PWA/issues"
+    "url": "https://github.com/Delph-Sunny/18-Budget_Tracker_PWA/issues"
   },
-  "homepage": "https://github.com/Delph-Sunny/18-Budget_Trackers_PWA#readme",
+  "homepage": "https://github.com/Delph-Sunny/18-Budget_Tracker_PWA#readme",
   "dependencies": {
     "compression": "^1.7.4",
     "express": "^4.17.1",
