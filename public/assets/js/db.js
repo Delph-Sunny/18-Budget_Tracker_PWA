@@ -1,15 +1,22 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
-const request = indexedDB.open("budget", 1); // create a new db request for a "budget" database.
 
-request.onupgradeneeded = function(event) {
+// Warning for old unsupported browsers
+if (!window.indexedDB) {
+  console.log("Your browser doesn't support a stable version of IndexedDB. Offline transactions will not be available.");
+}
+
+const request = indexedDB.open("budget", 1); // create a new db request for a "budget" database.
+let db;
+
+request.onupgradeneeded = event => {
   // create object store called "pending" and set autoIncrement to true
-  const db = request.result;
+  db = request.result;
   db.createObjectStore("pending", { autoIncrement: true });
 };
 
-request.onsuccess = function(event) {
-  const db = request.result;
+request.onsuccess = event =>{
+  db = request.result;
   console.log(event.type); // FOR TESTING
   // check if app is online before reading from db
   if (navigator.onLine) {
@@ -18,12 +25,12 @@ request.onsuccess = function(event) {
 };
 
 request.onerror = function(event) {
-  console.log("Woops! " + event.target.errorCode);
+  console.log("Database error: " + event.target.errorCode);
 };
 
 
 function checkDatabase() {
-  const db = request.result;
+  db = request.result;
   let transaction = db.transaction(["pending"], "readwrite"); // open a transaction on your pending db
   let store = transaction.objectStore("pending"); // access your pending object store
   const getAll = store.getAll(); // get all records from store and set to a variable
@@ -53,7 +60,7 @@ function checkDatabase() {
 
 
 function saveRecord(record) {
-  const db = request.result;
+  db = request.result;
   let transaction = db.transaction(["pending"], "readwrite"); // create a transaction on the pending db with readwrite access
   let store = transaction.objectStore("pending"); // access your pending object store
   store.add(record); // add record to your store with add method.

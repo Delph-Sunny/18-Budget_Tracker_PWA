@@ -2,6 +2,7 @@
 /* eslint-disable no-use-before-define */
 let transactions = [];
 let myChart;
+M.AutoInit();
 
 fetch("/api/transaction")
   .then(response => {
@@ -14,6 +15,42 @@ fetch("/api/transaction")
     populateChart();
   });
 
+// Function to get the current date
+function displayDate() {
+  let today = new Date();
+  let date = ("0" + today.getDate()).slice(-2);
+  let weekDay = today.getDay();
+  let year = today.getFullYear();
+  let month = today.getMonth();
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+  document.querySelector("#date").textContent = `${days[weekDay]}, ${months[month]} ${date}, ${year}`;
+}
+
+
 function populateTotal() {
   // reduce transaction amounts to a single total value
   let total = transactions.reduce((total, t) => {
@@ -22,6 +59,7 @@ function populateTotal() {
 
   let totalEl = document.querySelector("#total");
   totalEl.textContent = total;
+  displayDate(); // Call to display the current date
 }
 
 function populateTable() {
@@ -70,10 +108,34 @@ function populateChart() {
       labels,
       datasets: [{
         label: "Total Over Time",
+        display: false,
         fill: true,
-        backgroundColor: "#6666ff",
+        backgroundColor: "#ffccbc",
         data
       }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Total Over Time"
+      },
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: "Total Amount"
+          }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: "Time (Date)"
+          }
+        }],
+      }
     }
   });
 }
@@ -81,14 +143,19 @@ function populateChart() {
 function sendTransaction(isAdding) {
   let nameEl = document.querySelector("#t-name");
   let amountEl = document.querySelector("#t-amount");
-  let errorEl = document.querySelector(".form .error");
+  let counterEl = document.querySelector(".character-counter");
 
   // validate form
   if (nameEl.value === "" || amountEl.value === "") {
-    errorEl.textContent = "Missing Information";
+    M.toast({ html: "Missing information! <br> Please enter the name and amount of the new transaction.", classes: "rounded" });
     return;
-  } else {
-    errorEl.textContent = "";
+  }
+
+  // Convert negative numbers
+  if (amountEl.value < 0) {
+    M.toast({ html: "Only positive values can be used. <br> Converting!", classes: "rounded" });
+    amountEl.value = Math.abs(amountEl.value);
+    console.log(amountEl.value);
   }
 
   // create record
@@ -125,20 +192,21 @@ function sendTransaction(isAdding) {
     })
     .then(data => {
       if (data.errors) {
-        errorEl.textContent = "Missing Information";
+        M.toast({ html: "Missing information! <br> Please enter the name and amount of the new transaction.", classes: "rounded" });
       } else {
       // clear form
         nameEl.value = "";
         amountEl.value = "";
+        counterEl.innerHTML="";
       }
     })
     .catch(err => {
     // fetch failed, so save in indexed db
       saveRecord(transaction);
-
       // clear form
       nameEl.value = "";
       amountEl.value = "";
+      counterEl.innerHTML="";
     });
 }
 
@@ -150,4 +218,13 @@ document.querySelector("#add-btn").onclick = (event) => {
 document.querySelector("#sub-btn").onclick = (event) => {
   event.preventDefault(); // To stop propagation in the form
   sendTransaction(false);
+};
+
+// *** FUTURE DEV : Undo and reset options **** //
+document.querySelector("#reset").onclick = (event) => {
+  // TO DO
+};
+
+document.querySelector("#undo").onclick = (event) => {
+  // TO DO
 };
